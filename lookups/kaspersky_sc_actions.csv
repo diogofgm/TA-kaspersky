@@ -1,0 +1,7 @@
+vendor_action,action
+Allow,allowed
+Allowed,allowed
+Blocked,blocked
+Databases are corrupted,unknown
+Detected,unknown
+Invalid key file,unknown
