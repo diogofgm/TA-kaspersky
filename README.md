@@ -1,13 +1,10 @@
 # Splunk TA for Kaspersky
 
-Getting started
+Install
 
-- Install both the app and the TA
+- Install both the TA in the search heads and indexers
 - Setup a TCP input pointed to index "kaspersky"
-
-Roadmap
-
-- Sourcetype renaming 
+- Configure Kaspersky Security Center to send logs to you splunk instance using the LEEF (Q1 Radar) option
 
 Feedback
 
