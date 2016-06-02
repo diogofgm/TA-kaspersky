@@ -33,3 +33,9 @@ export = system
 owner = nobody
 version = 6.4.0
 modtime = 1462812597.903276000
+
+[]
+access = read : [ * ], write : [ admin, power ]
+export = system
+version = 6.4.0
+modtime = 1464345295.008106000
