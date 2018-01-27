@@ -13,7 +13,19 @@
 feedback+kaspersky_ta@devbusters.com
 
 
-Log Types
+https://support.kaspersky.com/9323
+
+
+# Docs
+
+*Log types*
+GNRL - General
+KLNAG - Network Agent
+KLAUD - Audit
+KLPRCI -
+KLSRV - Server Administration
+
+*Event types*
 GNRL_EV_ATTACK_DETECTED
 GNRL_EV_DEVCTRL_DEV_PLUGGED
 GNRL_EV_DEVCTRL_DEV_UNPLUGGED
@@ -44,3 +56,9 @@ KLSRV_HOST_STATUS_WARNING
 KLSRV_INVISIBLE_HOSTS_REMOVED
 KLSRV_RUNTIME_ERROR
 KLSRV_UPD_BASES_UPDATED
+
+#Change Log
+
+1.0.2
+Added kaspersky:cef sourcetype
+Added malware operations tags
