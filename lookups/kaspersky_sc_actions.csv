@@ -3,5 +3,6 @@ Allow,allowed
 Allowed,allowed
 Blocked,blocked
 Databases are corrupted,unknown
-Detected,unknown
+Detected,deferred
 Invalid key file,unknown
+"has connected to",success
