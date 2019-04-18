@@ -1,4 +1,4 @@
-# Splunk TA for Kaspersky
+# Kaspersky TA for Splunk
 
 ## Install
 - Install both the TA in the search heads and indexers (or fowarders)
