@@ -9,8 +9,6 @@
 - Include extractions in case of CEF format being used
 - Add missing event types for sourcetype renaming
 
-*Feedback*
-feedback+kaspersky@devbusters.com
 
 ## Docs
 
