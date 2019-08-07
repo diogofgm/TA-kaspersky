@@ -1,11 +1,11 @@
-"vendor_action",action
-"Allow",allowed
-"Allowed",allowed
-"Blocked",blocked
-"Databases are corrupted",unknown
-"Detected",deferred
-"Invalid key file",unknown
-"has connected to",success
-"Password-protected",deferred
-"Untreated",allowed
+"vendor_action","action"
+"Allow","allowed"
+"Allowed","allowed"
+"Blocked","blocked"
+"Databases are corrupted","unknown"
+"Detected","deferred"
+"Invalid key file","unknown"
+"has connected to","success"
+"Password-protected","deferred"
+"Untreated","allowed"
 "has been installed","install"
