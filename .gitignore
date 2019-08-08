@@ -4,3 +4,5 @@ addon_builder.conf
 
 .vscode
 build/
+
+.DS_Store
