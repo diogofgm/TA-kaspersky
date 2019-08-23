@@ -10,7 +10,10 @@ Kaspersky Add-on for Splunk
    :maxdepth: 1
    :caption: Contents:
 
-
+releasenotes
+requirements
+installation
+support
 
 Indices and tables
 ==================
