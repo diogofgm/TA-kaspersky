@@ -9,3 +9,5 @@
 "Password-protected","deferred"
 "Untreated","allowed"
 "has been installed","install"
+"Moved to Quarantine","deferred"
+"Deleted","blocked"
