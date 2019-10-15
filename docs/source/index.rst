@@ -13,6 +13,7 @@ Kaspersky Add-on for Splunk
 releasenotes
 requirements
 installation
+troubleshooting
 support
 
 Indices and tables
