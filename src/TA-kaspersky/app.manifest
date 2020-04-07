@@ -5,7 +5,7 @@
     "id": {
       "group": null, 
       "name": "TA-kaspersky", 
-      "version": "0.1.3"
+      "version": "0.1.4"
     }, 
     "author": [
       {
@@ -25,10 +25,10 @@
       "developmentStatus": "Production/Stable"
     }, 
     "commonInformationModels": {
-	    "Authentication":">=4.0.0,<=4.13.0",
-	    "Change Analysis":">=4.0.0,<=4.13.0",
-	    "Change":">=4.12.0,<=4.13.0",
-	    "Malware":">=4.0.0,<=4.13.0"
+	    "Authentication":">=4.0.0,<=4.15.0",
+	    "Change Analysis":">=4.0.0,<=4.15.0",
+	    "Change":">=4.12.0,<=4.15.0",
+	    "Malware":">=4.0.0,<=4.15.0"
 		}, 
     "license": {
       "name": "Apache License, Version 2.0", 
@@ -52,12 +52,13 @@
   "incompatibleApps": null, 
   "platformRequirements": {
     "splunk": {
-      "Enterprise": ">=7.0.0,<=7.3.2"
+      "Enterprise": ">=7.1.0,<=8.0.3"
     }
   }, 
   "supportedDeployments": [
-    "_standalone", 
-    "_distributed"
+    "*"
   ], 
-  "targetWorkloads": null
+  "targetWorkloads": [
+    "*"
+  ]
 }
