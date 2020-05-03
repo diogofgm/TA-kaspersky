@@ -90,9 +90,11 @@ jobs:
       - run:
           name: Login to Splunkbase
           command: |
+            echo $SPLUNKBASE_USER
+            echo $SPLUNKBASE_PASSWORD
             AUTH=$(curl --location --request POST 'https://splunkbase.splunk.com/api/account:login/' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=$SPLUNKBASE_USER' --data-urlencode 'password=$SPLUNKBASE_PASSWORD')
             echo "$AUTH"
-            if [ "$AUTH" == "Credentials Invalid"]; then
+            if [ "$AUTH" == "Credentials Invalid" ]; then
               exit 1
             else 
               exit 0
