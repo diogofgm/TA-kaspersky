@@ -90,7 +90,7 @@ jobs:
       - run:
           name: Login to Splunkbase
           command: |
-            AUTH=$(curl --location --request POST 'https://splunkbase.splunk.com/api/account:login/' --header 'Content-Type: application/x-www-form-urlencoded' --header 'Cookie: csrftoken=${SPLUNKBASE_CSRF_TOKEN}' --data-urlencode 'username=${SPLUNKBASE_USER}' --data-urlencode 'password=${SPLUNKBASE_PASSWORD}')
+            AUTH=$(curl --location --request POST 'https://splunkbase.splunk.com/api/account:login/' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=${SPLUNKBASE_USER}' --data-urlencode 'password=${SPLUNKBASE_PASSWORD}')
             echo "$AUTH"
 
 workflows:
