@@ -78,9 +78,21 @@ jobs:
       - attach_workspace:
           at: ~/TA-kaspersky/dist/TA-kaspersky.tar.gz
       - run:
-          name: publish release on github
+          name: Publish Release on Github
           command: |
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ~/TA-kaspersky/dist/TA-kaspersky.tar.gz
+  publish-splunkbase-realease:
+    docker:
+      - image: cibuilds/github:0.10
+    steps:
+      - attach_workspace:
+          at: ~/TA-kaspersky/dist/TA-kaspersky.tar.gz
+      - run:
+          name: Login to Splunkbase
+          command: |
+            AUTH=$(curl --location --request POST 'https://splunkbase.splunk.com/api/account:login/' --header 'Content-Type: application/x-www-form-urlencoded' --header 'Cookie: csrftoken=${SPLUNKBASE_CSRF_TOKEN}' --data-urlencode 'username=${SPLUNKBASE_USER}' --data-urlencode 'password=${SPLUNKBASE_PASSWORD}')
+            echo "$AUTH"
+
 workflows:
   version: 2.1
   validate-and-build:
@@ -97,3 +109,9 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
+      - publish-splunkbase-realease:
+          requires:
+            - validate-content
+          filters:
+            tags:
+              only: /.*/
