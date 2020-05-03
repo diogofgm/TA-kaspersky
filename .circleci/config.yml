@@ -110,6 +110,7 @@ workflows:
             branches:
               ignore: /.*/
       - publish-splunkbase-realease:
+          context: GitHub
           requires:
             - validate-content
           filters:
