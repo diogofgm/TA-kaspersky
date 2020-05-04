@@ -78,7 +78,7 @@ jobs:
       - attach_workspace:
           at: ~/TA-kaspersky/dist/TA-kaspersky.tar.gz
       - run:
-          name: Publish Release on Github
+          name: Publish release on Github
           command: |
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ~/TA-kaspersky/dist/TA-kaspersky.tar.gz
   publish-splunkbase-realease:
@@ -90,15 +90,18 @@ jobs:
       - run:
           name: Login to Splunkbase
           command: |
-            echo $SPLUNKBASE_USER
-            echo $SPLUNKBASE_PASSWORD
             AUTH=$(curl --location --request POST 'https://splunkbase.splunk.com/api/account:login/' --data-urlencode 'username='"$SPLUNKBASE_USER"'' --data-urlencode 'password='"$SPLUNKBASE_PASSWORD"'')
-            echo "$AUTH"
+            echo "$AUTH" > login.xml
             if [ "$AUTH" == "Credentials Invalid" ]; then
               exit 1
-            else 
+            else
               exit 0
             fi
+      - run:
+          name: Publish release on Splunkbase
+          command: |
+            SPLUNKBASE_SESSION_ID=$(awk '/id/{printf $1}' login.xml | cut -d">" -f2 | cut -d"<" -f1)
+            echo $SPLUNKBASE_SESSION_ID
 
 workflows:
   version: 2.1
