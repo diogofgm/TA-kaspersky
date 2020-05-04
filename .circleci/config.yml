@@ -27,9 +27,9 @@ jobs:
           name: Checkout Repository
           command: |
             if [ "${CIRCLE_BRANCH}" == "" ]; then
-                git clone https://${GITHUB_TOKEN}@github.com/diogofgm/${CIRCLE_PROJECT_USERNAME}
+                git clone https://${GITHUB_TOKEN}@github.com/diogofgm/${CIRCLE_PROJECT_REPONAME}
             else
-                git clone --branch ${CIRCLE_BRANCH} https://${GITHUB_TOKEN}@github.com/diogofgm/${CIRCLE_PROJECT_USERNAME}
+                git clone --branch ${CIRCLE_BRANCH} https://${GITHUB_TOKEN}@github.com/diogofgm/${CIRCLE_PROJECT_REPONAME}
             fi
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "TA-kaspersky/src/TA-kaspersky/default/app.conf" }}
@@ -53,16 +53,16 @@ jobs:
       - run:
           name: Run Splunk AppInspect
           command: |
-            cd ${CIRCLE_PROJECT_USERNAME}/src
-            tar -zcvf ${CIRCLE_PROJECT_USERNAME}.tar.gz ${CIRCLE_PROJECT_USERNAME}
+            cd ${CIRCLE_PROJECT_REPONAME}/src
+            tar -zcvf ${CIRCLE_PROJECT_REPONAME}.tar.gz ${CIRCLE_PROJECT_REPONAME}
             mkdir ../dist
-            cp ${CIRCLE_PROJECT_USERNAME}.tar.gz ../dist/
+            cp ${CIRCLE_PROJECT_REPONAME}.tar.gz ../dist/
             cd ../../
             cd appinspect-latest
             pwd
             ls -ltr
             source venv/bin/activate
-            splunk-appinspect inspect ../${CIRCLE_PROJECT_USERNAME}/src/${CIRCLE_PROJECT_USERNAME}.tar.gz
+            splunk-appinspect inspect ../${CIRCLE_PROJECT_REPONAME}/src/${CIRCLE_PROJECT_REPONAME}.tar.gz
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "TA-kaspersky/src/TA-kaspersky/default/app.conf" }}
           paths:
@@ -80,7 +80,7 @@ jobs:
       - run:
           name: Publish release on Github
           command: |
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ~/TA-kaspersky/dist/TA-kaspersky.tar.gz
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ~/${CIRCLE_PROJECT_REPONAME}/dist/${CIRCLE_PROJECT_REPONAME}.tar.gz
   publish-splunkbase-realease:
     docker:
       - image: cibuilds/github:0.10
