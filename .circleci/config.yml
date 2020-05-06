@@ -62,7 +62,10 @@ jobs:
             pwd
             ls -ltr
             source venv/bin/activate
-            splunk-appinspect inspect ../${CIRCLE_PROJECT_REPONAME}/src/${CIRCLE_PROJECT_REPONAME}.tar.gz
+            splunk-appinspect inspect ../${CIRCLE_PROJECT_REPONAME}/src/${CIRCLE_PROJECT_REPONAME}.tar.gz | tee appinspect.log
+            if grep -q FAILURE "appinspect.log"; then
+              exit 1
+            fi
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "TA-kaspersky/src/TA-kaspersky/default/app.conf" }}
           paths:
@@ -101,7 +104,8 @@ jobs:
           name: Publish release on Splunkbase
           command: |
             SPLUNKBASE_SESSION_ID=$(awk '/id/{printf $1}' login.xml | cut -d">" -f2 | cut -d"<" -f1)
-            echo $SPLUNKBASE_SESSION_ID
+            curl --location --request POST 'https://splunkbase.splunk.com/api/v1/app/'"${SPLUNKBASE_APP_ID}"'/new_release/' --header 'Authorization: Basic ZGlvZ29mZ206cHVmcFloLWd5cWZ1Ny13dW5oeWQ=' --header 'Cookie: sessionid='"$SPLUNKBASE_SESSION_ID"''; csrftoken=sMucg13V1Ul7v7JNlQLPzjr3fFbZFpHQmNwW4wvnFfJXrVXbvKUaG6lzCGPi48tM' --form 'files[]=@/'"${CIRCLE_PROJECT_REPONAME}"'/dist' --form 'filename='"${CIRCLE_PROJECT_REPONAME}"'.tgz' --form 'cim_versions=4.9,4.7' --form 'splunk_versions=8.0' --form 'visibility=true'
+            exit 1
 
 workflows:
   version: 2.1
@@ -126,5 +130,3 @@ workflows:
           filters:
             tags:
               only: /.*/
-            branches:
-              only: master
