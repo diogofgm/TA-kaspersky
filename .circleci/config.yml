@@ -84,7 +84,7 @@ jobs:
           name: Publish release on Github
           command: |
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ~/${CIRCLE_PROJECT_REPONAME}/dist/${CIRCLE_PROJECT_REPONAME}.tar.gz
-  publish-splunkbase-realease:
+  publish-splunkbase-release:
     docker:
       - image: cibuilds/github:0.10
     steps:
@@ -123,7 +123,7 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
-      - publish-splunkbase-realease:
+      - publish-splunkbase-release:
           context: GitHub
           requires:
             - validate-content
