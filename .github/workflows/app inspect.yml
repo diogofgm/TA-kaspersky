@@ -1,0 +1,21 @@
+
+name: AppInspect
+on:
+  push:
+    branches:
+      - "main"
+      - "develop"
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+    paths-ignore:
+      - '.github/**'
+  pull_request:
+    branches:
+      - "main"
+      - "develop"
+    paths-ignore:
+      - '.github/**'
+
+jobs:
+   build:
+     uses: artemrys/workflow-splunk-addon/.github/workflows/reusable-build-release.yaml@v0.0.8
