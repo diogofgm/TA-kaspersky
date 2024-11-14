@@ -5,13 +5,13 @@
     "id": {
       "group": null, 
       "name": "TA-kaspersky", 
-      "version": "0.1.4"
+      "version": "1.0.0"
     }, 
     "author": [
       {
         "name": "Diogo Silva", 
-        "email": "diogo.silva@devbusters.com", 
-        "company": "Devbusters"
+        "email": "diogo.silva@homeostase.pt", 
+        "company": "Homeostase"
       }
     ], 
     "releaseDate": null, 
