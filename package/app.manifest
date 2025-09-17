@@ -5,12 +5,12 @@
     "id": {
       "group": null, 
       "name": "TA-kaspersky", 
-      "version": "1.0.0"
+      "version": "1.0.1"
     }, 
     "author": [
       {
-        "name": "Diogo Silva", 
-        "email": "diogo.silva@homeostase.pt", 
+        "name": "Homeostase", 
+        "email": "splunkbase@homeostase.pt", 
         "company": "Homeostase"
       }
     ], 
